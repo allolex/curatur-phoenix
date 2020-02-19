@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "80:4000"
+    env_file:
+      - .env
+      - docker.env
+    depends_on:
+      - db
+      - rabbitmq
+  rabbitmq:
+    image: "rabbitmq:latest"
+    ports:
+      - "5672:5672"
+  db:
+    image: "postgres:latest"
+    volumes:
+      - "./volumes/postgres:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+      - docker.env
