@@ -6,6 +6,7 @@ do
 done
 
 mix ecto.migrate  # migrate your database if Ecto is used
-mix escript.build # create application executable binary
 
-./curatur
+# mix escript.build # create application executable binary
+
+mix phx.server

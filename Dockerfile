@@ -42,5 +42,7 @@ COPY . .
 # Compile the entire project
 RUN mix compile
 
+EXPOSE 4000
+
 # Run the application itself
 CMD ["./scripts/entrypoint.bash"]
