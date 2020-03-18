@@ -9,4 +9,5 @@ mix ecto.migrate  # migrate your database if Ecto is used
 
 # mix escript.build # create application executable binary
 
+mix phx.digest
 mix phx.server

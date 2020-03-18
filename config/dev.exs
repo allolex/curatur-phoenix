@@ -30,6 +30,11 @@ config :curatur, CuraturWeb.Endpoint,
     ]
   ]
 
+config :peerage,
+  via: Peerage.Via.List,
+  node_list: [:"curatur@127.0.0.1"],
+  log_results: false
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

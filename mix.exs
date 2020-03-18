@@ -1,3 +1,9 @@
+defmodule Curatur.CLI do
+  def main(_args) do
+    IO.puts("Launching Curatur.CLI")
+  end
+end
+
 defmodule Curatur.MixProject do
   use Mix.Project
 
@@ -21,7 +27,7 @@ defmodule Curatur.MixProject do
   def application do
     [
       mod: {Curatur.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :peerage]
     ]
   end
 
@@ -38,7 +44,7 @@ defmodule Curatur.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.13"},
+      {:phoenix, "~> 1.4.16"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
@@ -47,7 +53,8 @@ defmodule Curatur.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:peerage, "~> 1.0.2"}
     ]
   end
 
@@ -63,11 +70,5 @@ defmodule Curatur.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
-  end
-end
-
-defmodule Curatur.CLI do
-  def main(_args) do
-    IO.puts("Launching Curatur.CLI")
   end
 end

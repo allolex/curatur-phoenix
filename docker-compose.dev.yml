@@ -1,0 +1,13 @@
+version: "3"
+services:
+  devdb:
+    image: "postgres:11"
+    container_name: "curatur_postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD
+volumes:
+  postgres_data:

@@ -33,6 +33,7 @@ config :curatur,
   ecto_repos: [Curatur.Repo]
 
 config :curatur, Curatur.Repo,
+  adapter: Ecto.Adapters.Postgres,
   url: database_url,
   pool_size: 15
 
@@ -55,6 +56,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :peerage, via: Peerage.Via.Dns,
+  dns_name: "localhost",
+  app_name: "curatur"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
