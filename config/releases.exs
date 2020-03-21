@@ -4,42 +4,19 @@
 # remember to add this file to your .gitignore.
 import Config
 
+app_host = System.fetch_env!("APP_HOST")
 service_name = System.fetch_env!("SERVICE_NAME")
 
-db_user = System.get_env("POSTGRES_USER") ||
-    raise """
-    environment variable POSTGRES_USER is missing.
-    """
+secret_key_base = System.get_env("SECRET_KEY_BASE") ||
+  raise "Environment variable SECRET_KEY_BASE is missing. You can generate one by calling: mix phx.gen.secret"
 
-db_host = System.get_env("DATABASE_HOST") ||
-    raise """
-    environment variable DATABASE_HOST is missing.
-    """
-
-db_password = System.get_env("POSTGRES_PASSWORD") || 
-    raise """
-    environment variable POSTGRES_PASSWORD is missing.
-    """
-
-db_name = System.get_env("DATABASE_NAME") ||
-    raise """
-    environment variable DATABASE_NAME is missing.
-    """
+db_host = System.fetch_env!("DATABASE_HOST")
+db_name = System.fetch_env!("DATABASE_NAME")
+db_password = System.fetch_env!("POSTGRES_PASSWORD")
+db_user = System.fetch_env!("POSTGRES_USER")
 
 database_url = "ecto://#{db_user}:#{db_password}@#{db_host}/#{db_name}"
 
-secret_key_base =
-  System.get_env("SECRET_KEY_BASE") ||
-    raise """
-    environment variable SECRET_KEY_BASE is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
-
-app_host =
-  System.get_env("APP_HOST") ||
-    raise """
-    environment variable APP_HOST is missing.
-    """
 port = String.to_integer(System.get_env("PORT") || "4000")
 
 config :curatur, Curatur.Repo,

@@ -39,9 +39,6 @@ RUN mix deps.compile
 # Copy all application files
 COPY . .
 
-# Compile the entire project
-# RUN mix compile
-
 # Release commands
 RUN mix phx.digest
 RUN mix release
@@ -49,6 +46,4 @@ RUN mix release
 EXPOSE 4000
 
 # Run the application itself
-# CMD ["./scripts/entrypoint.bash"]
-# Run the release
 CMD /opt/curatur/_build/prod/rel/curatur/bin/curatur start
